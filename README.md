@@ -4,7 +4,7 @@
 
 This is the movie app!
 
-This is the app is Deployed [here](Link)!  This app is designed to help people find movies!
+This is the app is Deployed FrontEnd [here](Link)!  This app is designed to help people find movies!
 
 This repository contains:
 
@@ -16,6 +16,12 @@ This repository contains:
 
 - [Background](#background)
 - [Goals](#goals)
+- [Description](#Description)
+- [Brief-Example](#Brief-Example)
+- [User-Stories](#User-Stories)
+- [Getting-Started](#Getting-Started)
+- [Technologies-used](#technologies-used)
+- [Dependencies](#dependencies)
 - [Deployed App](#Deployment)
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
@@ -35,9 +41,38 @@ The goals for this repository are:
 2. To create a deployable FrontEnd and BackEnd, resulting in a fully functional full-stack application
 3. To share the source code for our app with the world
 
+## Description
+
+An app that helps you find movies to watch!
+
+## Brief Example
+
+(screenshots of app)
+NEEDS TO BE ADDED AFTER PROJECT IS FINISHED
+
+## User Stories
+
+PUT THE USER STORIES HERE!!!
+
+## Getting Started
+
+(descrbe how to use the app)
+NEEDS TO BE ADDED AFTER PROJECT IS FINISHED
+
+## technologies used
+
+This project uses node.js React.js, javascript, CSS, HTML, mongoose, express.js, and mongoDB
+
+## dependencies
+
+(look in the pakcage.json and the imports)
+NEEDS TO BE ADDED AFTER PROJECT IS FINISHED
+
 ## Deployment
 
-This project is deployed [here](link)!
+This project FrontEnd is deployed [here](link)!
+
+This project BackEnd is deployed [here](link)!
 
 ## Maintainers
 
