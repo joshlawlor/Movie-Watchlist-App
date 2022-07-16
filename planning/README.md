@@ -8,15 +8,26 @@ This is the planning directory!
 This directory contains all the prep work, notes and planning we did for this app
 
 ## Table of Contents
-
+- [Notes](#notes)
+- [Problems](#problems)
 - [Background](#background)
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 - [License](#license)
 
+## notes
+
+The BackEnd is going to be deployed on Heruko
+Trello board https://trello.com/b/MPTWM7pB/proposal-board
+MongoDB atlas
+
+## problems
+
+(from user stories)
+
 ## Backgound
 
-The
+We came up with the idea, because we are all movie lovers and we all loved the idea of this app!
 
 ## Maintainers
 
