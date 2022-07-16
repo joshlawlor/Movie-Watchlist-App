@@ -20,13 +20,13 @@ A web application, that helps you find movies to watch
 - User can remove a movie to their watchList
 - User see a summary of a given movie
 - User can able to delete their account
+- Able to select different platform
 
 ## Stretch Goals
 
 - RAPID API intergation
 - Likes and Reviews on Movies
 - Able to compare WatchList to other users
-- Able to select different platform and filter by them
 - If users don't have any movies in common suggest movies they both might like
 
 ## Technologies used
@@ -50,22 +50,23 @@ A web application, that helps you find movies to watch
 
 ## Models
 
-Movie{
-    platform
+1. Movie{
+    genre: String,
+    platform: String,
     image: String,
-    description: String
+    summary: String
 }
 
-User{
+2. User{
     email: String,
-    username,
-    password,
-    watchList,
+    username: String,
+    password: String,
+    watchList: []
 }
 
 ## User stories
-As an user, I want to be able to login using to access my personal WatchList
-As a Admin, I want to be able to access and edit Users and Movies
-As a Developer, I want to easily access the models and Data
-As a User, I want to see a large list of movies that I can pick from
-As a User, I want to be able to rate and review Movies
+- As an user, I want to be able to login using to access my personal WatchList
+- As a Admin, I want to be able to access and edit Users and Movies
+- As a Developer, I want to easily access the models and Data
+- As a User, I want to see a large list of movies that I can pick from
+- As a User, I want to be able to rate and review Movies
