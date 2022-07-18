@@ -12,6 +12,7 @@ An app that help you find movies you want to watch, accross platforms.  Netflix,
 ### List of models and their properties
 
 1. Movie{
+    title: String,
     genre: String,
     platform: String,
     image: String,
