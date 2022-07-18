@@ -11,6 +11,20 @@ A web application that helps you find movies to watch
 - [User-Stories](#user-stories)
 - [Wireframes](#Wireframes)
 
+### Your group members
+
+- Joshua Lawlor [@joshlawlor](https://github.com/joshlawlor) 
+- Joshua Garst [@testler](https://github.com/testler)       
+- Ben Broad [@benb](https://github.com/benb)               
+- Sloane Smith [@ss18026](https://github.com/ss18026)
+
+### Your project idea 
+
+An app that help you find movies you want to watch, accross platforms.  Netflix, hulu, apple TV+ create a watchlist that spans across them all
+
+### Scrum manager/project manager's name
+
+[@joshlawlor](https://github.com/joshlawlor) Joshua Lawlor
 
 ## MVP
 
@@ -49,9 +63,10 @@ A web application that helps you find movies to watch
 - JavaScript
 
 
-## Models
+### List of models and their properties
 
 1. Movie{
+    title: String,
     genre: String,
     platform: String,
     image: String,
