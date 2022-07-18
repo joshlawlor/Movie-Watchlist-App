@@ -5,7 +5,7 @@ TODO: Put more badges here.
 
 This is the planning directory!
 
-This directory contains all the prep work, notes and planning we did for this app
+This directory contains all the prep work, notes, and planning we did for this app.
 
 ## Table of Contents
 - [Notes](#notes)
@@ -17,9 +17,9 @@ This directory contains all the prep work, notes and planning we did for this ap
 
 ## notes
 
-The BackEnd is going to be deployed on Heruko
+The BackEnd is going to be deployed on Heroku.
 Trello board https://trello.com/b/MPTWM7pB/proposal-board
-MongoDB atlas
+MongoDB Atlas
 
 ## problems
 
@@ -27,7 +27,7 @@ MongoDB atlas
 
 ## Backgound
 
-We came up with the idea, because we are all movie lovers and we all loved the idea of this app!
+We came up with the idea because we are all movie lovers, and we all loved the idea of this app!
 
 ## Maintainers
 

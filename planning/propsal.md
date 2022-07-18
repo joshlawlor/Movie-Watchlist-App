@@ -1,6 +1,6 @@
 # Movie app
 
-A web application, that helps you find movies to watch
+A web application that helps you find movies to watch
 
 ## Table of Contents
 
@@ -9,25 +9,26 @@ A web application, that helps you find movies to watch
 - [Technologies-used](#Technologies-used)
 - [Models](#models)
 - [User-Stories](#user-stories)
+- [Wireframes](#Wireframes)
 
 
 ## MVP
 
-- User can login
+- User can log in
 - User can create a watchList
-- User can browse movies
-- User can add a movie to their watchList
-- User can remove a movie to their watchList
+- Users can browse movies
+- Users can add a movie to their watchList
+- Users can remove a movie to their watchList
 - User see a summary of a given movie
-- User can able to delete their account
-- Able to select different platform
+- Users can able to delete their account
+- Able to select different platforms
 
 ## Stretch Goals
 
-- RAPID API intergation
+- RAPID API integration
 - Likes and Reviews on Movies
 - Able to compare WatchList to other users
-- If users don't have any movies in common suggest movies they both might like
+- If users don't have any movies in common, suggest movies they both might like
 
 ## Technologies used
 
@@ -65,8 +66,14 @@ A web application, that helps you find movies to watch
 }
 
 ## User stories
-- As an user, I want to be able to login using to access my personal WatchList
-- As a Admin, I want to be able to access and edit Users and Movies
-- As a Developer, I want to easily access the models and Data
-- As a User, I want to see a large list of movies that I can pick from
+- As a user, I want to be able to login using to access my WatchList
+- As an Admin, I want to be able to access and edit Users and Movies
+- As a Developer, I want to access the models and Data easily
+- As a User, I want to see an extensive list of movies that I can pick from
 - As a User, I want to be able to rate and review Movies
+- As a user, I want to see the movies I have favorited to watch
+- As a User, I want to update my list of movies to watch
+- As a User, I want to add friends and compare/contrast movies we want to watch
+
+## Wireframes
+![wireframe](./wireframes/image.png "wireframe")
