@@ -20,6 +20,7 @@ const LoginForm = ({backendURL}) => {
               setErrorCode(2);
             }else{
               setErrorCode(0);
+              const token = response;  //replace or save token
               <Navigate to="/HomePage" replace={true} />
             }
         })
