@@ -17,7 +17,8 @@ const SignUpForm = ({backendURL}) => {
             setErrorCode(2);
           }else{
             setErrorCode(0);
-            <Navigate to="/HomePage" replace={true} /> // redirect to homepage
+            const token = response; //need to save token
+            <Navigate to="/HomePage" replace={true} /> // redirect to homepage, need to 
           }
       })
    }
