@@ -4,7 +4,9 @@ import SignUpForm from '../../components/SignUpForm/SignUpForm.jsx'
 import Modal from 'react-modal';
 
 
-const LandingPage = () => {
+
+
+const LandingPage = ({backendURL}) => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [modalContent, setModalContent] = useState(true);
 
@@ -28,7 +30,7 @@ const LandingPage = () => {
         <h3>Created By:</h3>
         <h4>Ben Broad, Josh Lawlor, Joshua Garst, Sloane Smith</h4>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-            {modalContent?<LoginForm/>:<SignUpForm/>}
+            {modalContent?<LoginForm backendURL={backendURL}/>:<SignUpForm backendURL={backendURL}/>}
         </Modal>
         <button onClick={loginListener}>Login</button>
         <button onClick={SignUpListener}>Create an Account</button>

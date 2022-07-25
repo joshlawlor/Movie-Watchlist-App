@@ -7,6 +7,9 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import MoviesPage from './pages/MoviesPage/MoviesPage'
 import WatchListPage from './pages/WatchListPage/WatchListPage'
 import FriendsPage from './pages/FriendsPage/FriendsPage'
+const backendURL = "http://127.0.0.1:8080/";
+
+
 function App(){
   return (
     <div className="App">
@@ -28,10 +31,10 @@ function App(){
           <Route path='/watchlist' element={<WatchListPage/>}/>
           <Route path='/friends' element={<FriendsPage/>}/>
           {/* Need to have :userid incorporated into Watchlist and Friends so it's specific to user */}
-          <Route path='/' element={<LandingPage/>}/>
+          <Route path='/' element={<LandingPage backendURL={backendURL}/>}/>
       </Routes>
     </div>
-  );
+  )
 }
 
 export default App;
