@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import LoginForm from '../components/LoginForm'
-import SignUpForm from '../components/SignUpForm'
+import LoginForm from '../../components/LoginForm/LoginForm'
+import SignUpForm from '../../components/SignUpForm/SignUpForm.jsx'
 import Modal from 'react-modal';
 
 

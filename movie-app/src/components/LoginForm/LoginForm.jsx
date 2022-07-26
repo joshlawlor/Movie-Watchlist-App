@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './LoginForm.css'
+
 
 const LoginForm = () => {
     const [userCred, SetUserCred] = useState({email: "", password: ""})
@@ -11,11 +13,13 @@ const LoginForm = () => {
         //send a request to check the database here
     }
   return (
-    <form onSubmit={handleSubmit}>
-        <label htmlFor="Email"/>
+    <form class='form' onSubmit={handleSubmit}>
+      <br/>
+        <label htmlFor="Email">Email</label>
         <input onChange={handleChange} type="email" name="email" id="email" />
-        <label htmlFor="password"></label>
+        <label htmlFor="password">Password</label>
         <input onChange={handleChange} type="password" name="password" id="password" />
+        <br/>
         <button type="submit">Log In</button>
     </form>
   )
