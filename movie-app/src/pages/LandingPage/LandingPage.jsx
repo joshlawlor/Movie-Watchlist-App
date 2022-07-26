@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import LoginForm from '../components/LoginForm'
-import SignUpForm from '../components/SignUpForm'
+import LoginForm from '../../components/LoginForm/LoginForm'
+import SignUpForm from '../../components/SignUpForm/SignUpForm.jsx'
 import Modal from 'react-modal';
 
 
@@ -24,6 +24,9 @@ const LandingPage = () => {
   
     return (
       <div>
+        <h1>Movie App</h1>
+        <h3>Created By:</h3>
+        <h4>Ben Broad, Josh Lawlor, Joshua Garst, Sloane Smith</h4>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
             {modalContent?<LoginForm/>:<SignUpForm/>}
         </Modal>

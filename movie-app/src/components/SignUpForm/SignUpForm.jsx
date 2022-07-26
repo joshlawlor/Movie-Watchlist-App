@@ -16,14 +16,16 @@ const SignUpForm = () => {
        }
     }
   return (
-    <form onSubmit={handleSubmit}>
-        <label htmlFor="Email">email</label>
+    <form class='form' onSubmit={handleSubmit}>
+      <br/>
+        <label htmlFor="Email">Email</label>
         <input onChange={handleChange} type="email" name="email" id="email" />
-        <label htmlFor="password">password</label>
+        <label htmlFor="password">Password</label>
         <input onChange={handleChange} type="password" name="password" id="password" />
-        <label htmlFor="password">confirm password</label>
+        <label htmlFor="password">Confirm Password</label>
         <input onChange={handleChange} type="confirmPassword" name="confirmPassword" id="confirmPassword" />
-        <button type="submit">Log In</button>
+        <br/>
+        <button type="submit">Sign Up</button>
     </form>
   )
 }
