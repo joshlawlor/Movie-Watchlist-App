@@ -14,8 +14,8 @@ function App(){
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/movies'>Movies</Link></li>
         <li><Link to='/watchlist'>Watch List</Link></li>
-        {/* Need to have :userid incorporated into Watchlist so it's specific to user */}
-        <li><Link to="/friends">Friends</Link></li>        
+        <li><Link to="/friends">Friends</Link></li>         
+        {/* Need to have :userid incorporated into Watchlist and Friends so it's specific to user */}
         <li><Link to="/users/login">Login</Link></li>
         <li><Link to="/users/signup">Signup</Link></li>
         {/* Need a way to show certain links only when logged in */}
@@ -27,7 +27,7 @@ function App(){
           <Route path='/users/signup' element={<SignUpPage/>}/>
           <Route path='/watchlist' element={<WatchListPage/>}/>
           <Route path='/friends' element={<FriendsPage/>}/>
-          {/* Need to have :userid incorporated into Watchlist so it's specific to user */}
+          {/* Need to have :userid incorporated into Watchlist and Friends so it's specific to user */}
           <Route path='/' element={<LandingPage/>}/>
       </Routes>
     </div>
