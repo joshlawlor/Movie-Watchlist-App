@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './LoginForm.css'
+import {setToken} from '../../utils/tokenService';
+import { Redirect } from 'react-router-dom';
 
 
 const LoginForm = ({backendURL}) => {
@@ -20,8 +22,8 @@ const LoginForm = ({backendURL}) => {
               setErrorCode(2);
             }else{
               setErrorCode(0);
-              const token = response;  //replace or save token
-              <Navigate to="/HomePage" replace={true} />
+              setToken(response);
+              <Redirect to="/"/>
             }
         })
     }
