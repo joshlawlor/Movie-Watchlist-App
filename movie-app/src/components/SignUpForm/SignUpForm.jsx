@@ -35,6 +35,7 @@ const SignUpForm = ({backendURL}) => {
   return (
     <form class='form' onSubmit={handleSubmit}>
       <br/>
+      <h3>User Sign Up</h3>
         <label htmlFor="Email">Email</label>
         <input onChange={handleChange} type="email" name="email" id="email" />
         {(errorCode===2)?<p className='error'>this email is already associated with an account</p>:null}
@@ -43,8 +44,8 @@ const SignUpForm = ({backendURL}) => {
         {(errorCode===1)?<p className='error'>passwords don't match</p>:null}
         <label htmlFor="password">confirm password</label>
         <input onChange={handleChange} type="confirmPassword" name="confirmPassword" id="confirmPassword" />
-        <br/>
         <button type="submit">Sign Up</button>
+        <br/>
     </form>
   )
 }

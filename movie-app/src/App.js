@@ -40,6 +40,7 @@ function App(){
           {/* Need to have :userid incorporated into Watchlist and Friends so it's specific to user */}
           <Route path='/' element={<LandingPage backendURL={backendURL}/>}/>
       </Routes>
+
     </div>
   )
 }

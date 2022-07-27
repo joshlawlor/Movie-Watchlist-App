@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
 import SignUpForm from '../../components/SignUpForm/SignUpForm.jsx'
 import Modal from 'react-modal';
+import styles from './LandingPage.css'
 
 
 
@@ -29,12 +30,20 @@ const LandingPage = ({backendURL}) => {
         <h1>Movie App</h1>
         <h3>Created By:</h3>
         <h4>Ben Broad, Josh Lawlor, Joshua Garst, Sloane Smith</h4>
+<<<<<<< HEAD
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
             {modalContent?<LoginForm backendURL={backendURL}/>:<SignUpForm backendURL={backendURL}/>}
+=======
+        <Modal className='modal'isOpen={modalIsOpen} onRequestClose={closeModal}>
+            {modalContent?<LoginForm/>:<SignUpForm/>}
+>>>>>>> loginCSS
         </Modal>
-        <button onClick={loginListener}>Login</button>
-        <button onClick={SignUpListener}>Create an Account</button>
+        <button className='landingButton' onClick={loginListener}>Login</button>
+        <br></br>
+        <button class='landingButton' onClick={SignUpListener}>Create an Account</button>
+        <div><img class="movieImage" src="https://cliparting.com/wp-content/uploads/2017/05/Movie-reel-movie-film-clip-art-clipartfest-strip-clipart-2.jpeg" alt="gif"></img></div>
     </div>
+
   )
 }
 
