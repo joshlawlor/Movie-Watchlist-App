@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link , Route , Routes} from 'react-router-dom'
 import './App.css';
 import LandingPage from './pages/LandingPage/LandingPage';
@@ -7,10 +7,17 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import MoviesPage from './pages/MoviesPage/MoviesPage'
 import WatchListPage from './pages/WatchListPage/WatchListPage'
 import FriendsPage from './pages/FriendsPage/FriendsPage'
+import tokenService from './utils/tokenService';
+import UserService from './utils/UserService';
 const backendURL = "http://127.0.0.1:8080/";
+const token = tokenService.getToken();
 
 
 function App(){
+  const [user,setUser] = useState({});
+  if(token){
+    setUser(UserService.getUser(token));
+  }
   return (
     <div className="App">
       <ul className='navbar'>

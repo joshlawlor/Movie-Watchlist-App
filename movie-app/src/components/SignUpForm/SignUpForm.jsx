@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import { Navigate } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import {setToken} from '../../utils/tokenService';
 
 const SignUpForm = ({backendURL}) => {
     const [userCred, SetUserCred] = useState({email: "", password: "", confirmPassword: ""})
@@ -17,8 +18,8 @@ const SignUpForm = ({backendURL}) => {
             setErrorCode(2);
           }else{
             setErrorCode(0);
-            const token = response; //need to save token
-            <Navigate to="/HomePage" replace={true} /> // redirect to homepage, need to 
+            setToken(response);
+            <Redirect to="/"/>
           }
       })
    }
