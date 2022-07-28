@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { Redirect } from 'react-router-dom';
-import {setToken} from '../../utils/tokenService';
+import tokenService from '../../utils/tokenService';
 
 const SignUpForm = ({backendURL}) => {
     const [userCred, SetUserCred] = useState({email: "", password: "", confirmPassword: ""})
@@ -10,18 +10,30 @@ const SignUpForm = ({backendURL}) => {
         SetUserCred({ ...userCred, [event.target.id]: event.target.value });
     };
     async function testUserCred(){
-      await fetch(`${backendURL}/users/signup`,{method: "POST", header: userCred})
+      console.log(userCred)
+      await fetch(`${backendURL}users/signup`,{method: "POST", body: JSON.stringify(userCred), headers: new Headers({'content-Type': 'application/json'})})
       .then((response) => {
+        console.log(response)
           if(!response.ok){
-            console.log(response);
+            console.log(response.body);
           }else if(response === "email in use"){
             setErrorCode(2);
           }else{
+            return response.json()
             setErrorCode(0);
-            setToken(response);
-            <Redirect to="/"/>
+            // setToken(response);
+            
           }
+      }).then(({token}) => {
+        console.log(token)
+        tokenService.setToken(token)
+        {<Redirect to="/"/>}
+      }).catch(err =>{
+        console.log('test user ')
+        console.log(err)
       })
+        
+      
    }
     function handleSubmit(e){
       e.preventDefault();

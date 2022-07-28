@@ -9,15 +9,15 @@ import WatchListPage from './pages/WatchListPage/WatchListPage'
 import FriendsPage from './pages/FriendsPage/FriendsPage'
 import tokenService from './utils/tokenService';
 import UserService from './utils/UserService';
-const backendURL = "http://127.0.0.1:8080/";
-const token = tokenService.getToken();
+const backendURL = "http://localhost:9000/";
+// const token = tokenService.getToken();
 
 
 function App(){
-  const [user,setUser] = useState({});
-  if(token){
-    setUser(UserService.getUser(token));
-  }
+  // const [user,setUser] = useState({});
+  // if(token){
+  //   setUser(UserService.getUser(token));
+  // }
   return (
     <div className="App">
       <ul className='navbar'>
@@ -34,7 +34,7 @@ function App(){
       <Routes>
           <Route path='/movies' element={<MoviesPage/>}/>
           <Route path='/users/login' element={<LoginPage/>}/>
-          <Route path='/users/signup' element={<SignUpPage/>}/>
+          <Route path='/users/signup' element={<SignUpPage backendURL={backendURL}/>}/>
           <Route path='/watchlist' element={<WatchListPage/>}/>
           <Route path='/friends' element={<FriendsPage/>}/>
           {/* Need to have :userid incorporated into Watchlist and Friends so it's specific to user */}
