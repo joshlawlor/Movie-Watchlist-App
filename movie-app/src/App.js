@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import {Link , Route , Routes} from 'react-router-dom'
 import './App.css';
 import LandingPage from './pages/LandingPage/LandingPage';
@@ -45,6 +46,19 @@ function App(){
 
     </div>
   )
+}
+import React, { Component } from 'react';
+import './App.css';
+import MovieRoutes from './components/MovieRoutes';
+import UserRoutes from './components/UserRoutes';
+import LandingPage from './pages/LandingPage';
+
+function App(){
+  return (
+    <div className="App">
+      <LandingPage/>
+    </div>
+  );
 }
 
 export default App;
