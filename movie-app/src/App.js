@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import {Link , Route , Routes} from 'react-router-dom'
 import './App.css';
@@ -46,20 +45,6 @@ function App(){
 
     </div>
   )
-=======
-import React, { Component } from 'react';
-import './App.css';
-import MovieRoutes from './components/MovieRoutes';
-import UserRoutes from './components/UserRoutes';
-import LandingPage from './pages/LandingPage';
-
-function App(){
-  return (
-    <div className="App">
-      <LandingPage/>
-    </div>
-  );
->>>>>>> 2798717 (created framework and landingPage)
 }
 
 export default App;

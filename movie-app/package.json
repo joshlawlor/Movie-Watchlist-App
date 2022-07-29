@@ -8,10 +8,7 @@
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.15.1",
-<<<<<<< HEAD
     "react-router-dom": "^6.3.0",
-=======
->>>>>>> 2798717 (created framework and landingPage)
     "react-scripts": "0.9.5"
   },
   "scripts": {
