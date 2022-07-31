@@ -7,9 +7,8 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import MoviesPage from './pages/MoviesPage/MoviesPage'
 import WatchListPage from './pages/WatchListPage/WatchListPage'
 import FriendsPage from './pages/FriendsPage/FriendsPage'
-import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage'
-// import tokenService from './utils/tokenService';
-// import UserService from './utils/UserService';
+import tokenService from './utils/tokenService';
+import UserService from './utils/UserService';
 const backendURL = "http://127.0.0.1:9000";
 // const token = tokenService.getToken();
 
@@ -34,7 +33,6 @@ function App(){
 
       <Routes>
           <Route path='/movies' element={<MoviesPage backendURL={backendURL}/>}/>
-          <Route path='/movies/:id' element={<MovieDetailsPage backendURL={backendURL}/>}/>
           <Route path='/users/login' element={<LoginPage backendURL={backendURL}/>}/>
           <Route path='/users/signup' element={<SignUpPage backendURL={backendURL}/>}/>
           <Route path='/watchlist' element={<WatchListPage backendURL={backendURL}/>}/>
