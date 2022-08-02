@@ -1,12 +1,12 @@
 import React from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
-import styles from './LoginPage.css'
+// import styles from './LoginPage.css'
 
 
-const LoginPage = () => {
+const LoginPage = ({backendURL}) => {
   return (
     <div class='loginPage'>
-        <LoginForm/>
+        <LoginForm backendURL={backendURL}/>
     </div>
   )
 }

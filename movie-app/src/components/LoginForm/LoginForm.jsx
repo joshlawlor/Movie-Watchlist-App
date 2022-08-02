@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './LoginForm.css'
-import {setToken} from '../../utils/tokenService';
-import { Redirect } from 'react-router-dom';
+import tokenService from '../../utils/tokenService';
 
 
 const LoginForm = ({backendURL}) => {
@@ -12,20 +11,21 @@ const LoginForm = ({backendURL}) => {
         SetUserCred({ ...userCred, [event.target.id]: event.target.value });
     };
     async function testUserCred(){
-        await fetch(`${backendURL}/users/login`,{method: "POST", header: userCred})
-        .then((response) => {
-            if(!response.ok){
-              console.log(response);
-            }else if(response === "email not found"){
-              setErrorCode(1);
-            }else if(response === "password incorrect"){
-              setErrorCode(2);
-            }else{
-              setErrorCode(0);
-              setToken(response);
-              <Redirect to="/"/>
-            }
-        })
+      console.log(userCred)
+      await fetch(`${backendURL}/users/login`,{method: "POST", body: JSON.stringify(userCred), headers: new Headers({'content-Type': 'application/json'})})
+      .then((response) => {
+        console.log(response)
+          if(!response.ok){
+            console.log(response.body);
+          }else {
+            setErrorCode(0);
+            return response.json()
+          }
+      }).then(({token}) => {
+        tokenService.setToken(token)
+      }).catch(err =>{
+        console.log(err)
+      })
     }
     function handleSubmit(e){
       e.preventDefault();
@@ -33,27 +33,19 @@ const LoginForm = ({backendURL}) => {
     }
   
   return (
-<<<<<<< HEAD
-    <form onSubmit={handleSubmit}>
-        {(errorCode===1)?<p className='error'>this email is not in our system</p>:null}
-        <label htmlFor="Email"/>
-        <input onChange={handleChange} type="email" name="email" id="email" />
-        {(errorCode===2)?<p className='error'>the password you entered is incorrect</p>:null}
-        <label htmlFor="password"></label>
-        <input onChange={handleChange} type="password" name="password" id="password" />
-=======
     <form class='form' onSubmit={handleSubmit}>
       <br/>
       <h3> User Login </h3>
         <div className='loginForm'>
+          {errorCode===1?<p>email not found</p>:null}
+          {errorCode===2?<p>Password is incorrect</p>:null}
         <label className='label' htmlFor="Email">Email</label>
         <input className="inputBox" onChange={handleChange} type="email" name="email" id="email" />
         </div>
         <div className='loginForm'>
-        <label clasName ='label' htmlFor="password">Password</label>
+        <label clasName='label' htmlFor="password">Password</label>
         <input className="inputBox" onChange={handleChange} type="password" name="password" id="password" />
         </div>
->>>>>>> loginCSS
         <br/>
         <button className='loginButton' type="submit">Log In</button>
     </form>

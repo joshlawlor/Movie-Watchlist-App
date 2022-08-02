@@ -30,13 +30,8 @@ const LandingPage = ({backendURL}) => {
         <h1>Movie App</h1>
         <h3>Created By:</h3>
         <h4>Ben Broad, Josh Lawlor, Joshua Garst, Sloane Smith</h4>
-<<<<<<< HEAD
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-            {modalContent?<LoginForm backendURL={backendURL}/>:<SignUpForm backendURL={backendURL}/>}
-=======
         <Modal className='modal'isOpen={modalIsOpen} onRequestClose={closeModal}>
-            {modalContent?<LoginForm/>:<SignUpForm/>}
->>>>>>> loginCSS
+            {modalContent?<LoginForm backendURL={backendURL}/>:<SignUpForm backendURL={backendURL}/>}
         </Modal>
         <button className='landingButton' onClick={loginListener}>Login</button>
         <br></br>

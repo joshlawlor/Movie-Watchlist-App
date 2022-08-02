@@ -1,10 +1,10 @@
 import React from 'react'
 import SignUpForm from '../../components/SignUpForm/SignUpForm'
 
-const SignUpPage = () => {
+const SignUpPage = ({backendURL}) => {
   return (
     <div>
-        <SignUpForm/>
+        <SignUpForm backendURL={backendURL}/>
     </div>
   )
 }
