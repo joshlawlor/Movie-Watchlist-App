@@ -33,19 +33,13 @@ const LoginForm = ({backendURL}) => {
     }
   
   return (
-    <form class='form' onSubmit={handleSubmit}>
-      <br/>
-      <h3> User Login </h3>
-        <div className='loginForm'>
-          {errorCode===1?<p>email not found</p>:null}
-          {errorCode===2?<p>Password is incorrect</p>:null}
-        <label className='label' htmlFor="Email">Email</label>
-        <input className="inputBox" onChange={handleChange} type="email" name="email" id="email" />
-        </div>
-        <div className='loginForm'>
-        <label clasName='label' htmlFor="password">Password</label>
-        <input className="inputBox" onChange={handleChange} type="password" name="password" id="password" />
-        </div>
+    <form className= 'form' classonSubmit={handleSubmit}>
+        {(errorCode===1)?<p className='error'>this email is not in our system</p>:null}
+        <label htmlFor="Email">Email</label>
+        <input onChange={handleChange} type="email" name="email" id="email" />
+        {(errorCode===2)?<p className='error'>the password you entered is incorrect</p>:null}
+        <label htmlFor="password">Password</label>
+        <input onChange={handleChange} type="password" name="password" id="password" />
         <br/>
         <button className='loginButton' type="submit">Log In</button>
     </form>

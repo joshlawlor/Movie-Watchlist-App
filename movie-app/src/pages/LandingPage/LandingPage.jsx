@@ -31,7 +31,7 @@ const LandingPage = ({backendURL}) => {
         <h3>Created By:</h3>
         <h4>Ben Broad, Josh Lawlor, Joshua Garst, Sloane Smith</h4>
         <Modal className='modal'isOpen={modalIsOpen} onRequestClose={closeModal}>
-            {modalContent?<LoginForm backendURL={backendURL}/>:<SignUpForm backendURL={backendURL}/>}
+            {modalContent?<LoginForm/>:<SignUpForm/>}
         </Modal>
         <button className='landingButton' onClick={loginListener}>Login</button>
         <br></br>

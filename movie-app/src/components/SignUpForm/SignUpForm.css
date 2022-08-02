@@ -4,3 +4,17 @@
     flex-direction: column;
     font-family: Copperplate, sans-serif;
 }
+
+.signUpButton {
+    background-color: #ebecf3;
+    border: solid;
+    color: rgb(10, 9, 9);
+    padding: 15px 32px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 6px;
+    width: 50%;
+    vertical-align: middle;
+    
+}

@@ -40,7 +40,7 @@
 }
 
 .loginButton:hover {
-    background-color: #e79168; /* Green */
+    background-color: #e79168; 
     color: rgb(10, 9, 9);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   }
