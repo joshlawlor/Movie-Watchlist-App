@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {Link , Route , Routes} from 'react-router-dom'
 import './App.css';
 import LandingPage from './pages/LandingPage/LandingPage';
@@ -7,9 +7,10 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import MoviesPage from './pages/MoviesPage/MoviesPage'
 import WatchListPage from './pages/WatchListPage/WatchListPage'
 import FriendsPage from './pages/FriendsPage/FriendsPage'
-import tokenService from './utils/tokenService';
-import UserService from './utils/UserService';
-const backendURL = "http://localhost:9000/";
+import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage'
+// import tokenService from './utils/tokenService';
+// import UserService from './utils/UserService';
+const backendURL = "http://127.0.0.1:9000";
 // const token = tokenService.getToken();
 
 
@@ -32,11 +33,12 @@ function App(){
       </ul>
 
       <Routes>
-          <Route path='/movies' element={<MoviesPage/>}/>
-          <Route path='/users/login' element={<LoginPage/>}/>
+          <Route path='/movies' element={<MoviesPage backendURL={backendURL}/>}/>
+          <Route path='/movies/:id' element={<MovieDetailsPage backendURL={backendURL}/>}/>
+          <Route path='/users/login' element={<LoginPage backendURL={backendURL}/>}/>
           <Route path='/users/signup' element={<SignUpPage backendURL={backendURL}/>}/>
-          <Route path='/watchlist' element={<WatchListPage/>}/>
-          <Route path='/friends' element={<FriendsPage/>}/>
+          <Route path='/watchlist' element={<WatchListPage backendURL={backendURL}/>}/>
+          <Route path='/friends' element={<FriendsPage backendURL={backendURL}/>}/>
           {/* Need to have :userid incorporated into Watchlist and Friends so it's specific to user */}
           <Route path='/' element={<LandingPage backendURL={backendURL}/>}/>
       </Routes>

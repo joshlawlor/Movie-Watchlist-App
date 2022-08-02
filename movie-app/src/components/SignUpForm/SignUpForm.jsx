@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import tokenService from '../../utils/tokenService';
 
 const SignUpForm = ({backendURL}) => {
@@ -11,25 +11,19 @@ const SignUpForm = ({backendURL}) => {
     };
     async function testUserCred(){
       console.log(userCred)
-      await fetch(`${backendURL}users/signup`,{method: "POST", body: JSON.stringify(userCred), headers: new Headers({'content-Type': 'application/json'})})
-      .then((response) => {
-        console.log(response)
-          if(!response.ok){
-            console.log(response.body);
-          }else if(response === "email in use"){
-            setErrorCode(2);
-          }else{
-            return response.json()
+      await fetch(`${backendURL}/users/signup`,{method: "POST", body: JSON.stringify(userCred), headers: new Headers({'content-Type': 'application/json'})})
+      .then((response) =>{
+        if(!response.ok){
+          console.log(response.body);
+        }else{
             setErrorCode(0);
-            // setToken(response);
-            
-          }
+            console.log(response);
+            console.log(response.json());
+            return response.json();
+        }
       }).then(({token}) => {
-        console.log(token)
         tokenService.setToken(token)
-        {<Redirect to="/"/>}
       }).catch(err =>{
-        console.log('test user ')
         console.log(err)
       })
         
@@ -48,12 +42,12 @@ const SignUpForm = ({backendURL}) => {
     <form class='form' onSubmit={handleSubmit}>
       <br/>
       <h3>User Sign Up</h3>
+        {(errorCode===1)?<p className='error'>passwords don't match</p>:null}
+        {(errorCode===2)?<p className='error'>this email is already associated with an account</p>:null}
         <label htmlFor="Email">Email</label>
         <input onChange={handleChange} type="email" name="email" id="email" />
-        {(errorCode===2)?<p className='error'>this email is already associated with an account</p>:null}
         <label htmlFor="password">password</label>
         <input onChange={handleChange} type="password" name="password" id="password"/>
-        {(errorCode===1)?<p className='error'>passwords don't match</p>:null}
         <label htmlFor="password">confirm password</label>
         <input onChange={handleChange} type="confirmPassword" name="confirmPassword" id="confirmPassword" />
         <button type="submit">Sign Up</button>
