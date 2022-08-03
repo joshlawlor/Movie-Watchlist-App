@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import tokenService from '../../utils/tokenService';
 
 const MovieDetailsPage = ({backendURL, state}) => {
     const [movie, setMovie] = useState([]);
@@ -28,7 +28,18 @@ const MovieDetailsPage = ({backendURL, state}) => {
     // console.log(data.movie)
     // },[]);
 
-    
+    const userToken = tokenService.getToken()
+
+    function handleAddToWatchlist(e){
+        async function addMovie() {
+            await fetch(`${backendURL}/users/watchlist/`, {method: "PATCH", body: JSON.stringify(data.movie) , headers: new Headers({'content-Type': 'application/x-www-form-urlencoded', 'authorization': `${userToken}`})})
+
+            .then(response =>{
+                console.log(response)
+            })
+        }   
+        addMovie()     
+    }
 
   return (
     <div>
@@ -36,7 +47,9 @@ const MovieDetailsPage = ({backendURL, state}) => {
         <h1>{data.movie.fullTitle}</h1>
         <h2>imDb Rating: {data.movie.imDbRating}</h2>
         <h3>Crew: {data.movie.crew}</h3>
-        <button>Add to Watchlist</button>
+
+
+        <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
         {/* Can add to watchlist by doing a push using data.movie */}
         <br/>
         <button>Add a Review</button>

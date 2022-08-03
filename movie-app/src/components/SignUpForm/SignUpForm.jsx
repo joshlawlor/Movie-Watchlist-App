@@ -18,10 +18,10 @@ const SignUpForm = ({backendURL}) => {
         }else{
             setErrorCode(0);
             console.log(response);
-            console.log(response.json());
             return response.json();
         }
       }).then(({token}) => {
+        console.log(token)
         tokenService.setToken(token)
       }).catch(err =>{
         console.log(err)
