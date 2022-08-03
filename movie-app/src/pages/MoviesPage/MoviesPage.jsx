@@ -31,7 +31,7 @@ const MoviesPage = ({backendURL}) => {
     <div><h1>Movies</h1>
       <ul>
         {movies.map(movie => {
-          return (<li><MovieThumbnail movie={movie}/></li>)
+          return (<li><MovieThumbnail backendURL={backendURL} movie={movie}/></li>)
         })
         }
       </ul>

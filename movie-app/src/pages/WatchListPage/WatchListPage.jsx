@@ -10,7 +10,7 @@ const WatchListPage = ({backendURL}) => {
   if(token !== undefined || token !== null){
     useEffect(()=>{
       async function getWatchlist(){
-        await fetch(backendURL + "/users/watchlist", {method: "GET", headers: new Headers({'authorizaion': token})})
+        await fetch(backendURL + "/users/watchlist", {method: "GET", headers: new Headers({'authorization': token})})
         .then(response => {
           if(response.ok)
             return response.json();
