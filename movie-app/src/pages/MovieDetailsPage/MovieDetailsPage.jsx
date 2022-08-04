@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import tokenService from '../../utils/tokenService';
+import ReviewForm from '../../components/ReviewForm/ReviewForm';
+import Modal from 'react-modal';
+
 
 const MovieDetailsPage = ({backendURL}) => {
   const {imdbId} = useParams();
@@ -20,7 +23,26 @@ const MovieDetailsPage = ({backendURL}) => {
 });
   const [isOnWatchlist, setIsOnWatchlist] = useState(false);
   const userToken = tokenService.getToken();
+  const [reviews, setReviewItems] = useState([])
 
+  useEffect(() => {
+    fetch(`http://localhost:9000/movies/`)
+    .then(res => res.json())
+    // .then(items => setReviewItems(items))
+  }, [])
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(true);
+
+  const ReviewListener = (e) => {
+      e.preventDefault();
+      setModalContent(false);
+      setIsOpen(true);
+  }
+  function closeModal() {
+      setIsOpen(false);
+    
+    }
 
   useEffect(()=>{
     async function checkMovie() {
@@ -71,9 +93,19 @@ const MovieDetailsPage = ({backendURL}) => {
         {isOnWatchlist?<button onClick={handleDeleteFromWatchlist}>remove from Watchlist</button>:<button onClick={handleAddToWatchlist}>Add to Watchlist</button>}
         {/* Can add to watchlist by doing a push using data.movie */}
         <br/>
-        <button>Add a Review</button>
+        <button onClick={ReviewListener}>Add a Review</button>
         <br/>
         <button>Add to Favorites</button>
+
+        <Modal className='modal' isOpen={modalIsOpen} onRequestClose={closeModal} movie={movie}>
+            <ReviewForm movie={movie}/>
+        </Modal>
+
+{movie.reviews.map((review) => {return <div><p>Rating:{review.rating} Comments: 
+{review.content}</p></div>})}        
+
+
+
     </div>
   )
 }

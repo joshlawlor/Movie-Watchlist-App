@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 // import { Redirect } from 'react-router-dom';
 import tokenService from '../../utils/tokenService';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = ({backendURL}) => {
     const [userCred, SetUserCred] = useState({email: "", password: "", confirmPassword: ""})
     const [errorCode, setErrorCode] = useState(0); // 1 is passoword don't match, 2 is email already taken
+    let navigate = useNavigate()
 
     function handleChange(event){
         SetUserCred({ ...userCred, [event.target.id]: event.target.value });
@@ -33,6 +35,7 @@ const SignUpForm = ({backendURL}) => {
       e.preventDefault();
       if(userCred.password === userCred.confirmPassword){
         testUserCred();
+        navigate('/movies', {replace:true})
       }
       else{
         setErrorCode(1);

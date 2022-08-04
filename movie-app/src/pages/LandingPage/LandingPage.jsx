@@ -3,6 +3,8 @@ import LoginForm from '../../components/LoginForm/LoginForm'
 import SignUpForm from '../../components/SignUpForm/SignUpForm.jsx'
 import Modal from 'react-modal';
 import styles from './LandingPage.css'
+import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -10,6 +12,7 @@ import styles from './LandingPage.css'
 const LandingPage = ({backendURL}) => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [modalContent, setModalContent] = useState(true);
+ 
 
     const loginListener = (e) => {
         e.preventDefault();
