@@ -36,13 +36,11 @@ const WatchListPage = ({backendURL}) => {
     }
     watchListShowAll()
   },[]);
-  console.log(watchList.map(movie => {
-    return console.log(movie)
-  }))
+
 
   return (
     <div>
-        <h1>Watchlist</h1>
+        <h1>My Watchlist</h1>
         <ul>
         {watchList.map(movie => {
           return (<li><MovieThumbnail movie={movie}/></li>)

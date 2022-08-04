@@ -7,7 +7,7 @@ const MovieDetailsPage = ({backendURL, state}) => {
     const location = useLocation();
     const data = location.state
     const userToken = tokenService.getToken()
-
+    console.log('MOVIE '+data.movie.id)
     function handleAddToWatchlist(e){
         async function addMovie() {
             await fetch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(data.movie) , headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
@@ -17,6 +17,17 @@ const MovieDetailsPage = ({backendURL, state}) => {
             })
         }   
         addMovie()     
+    }
+
+    function handleDeleteFromWatchlist(){
+        async function deleteMovie() {
+            await fetch(`${backendURL}/users/watchlist/delete/${data.movie.id}`, {method: "DELETE", headers: new Headers({'authorization': `${userToken}`}) })
+            .then(response =>{
+                console.log(response)
+                
+            })
+        }
+        deleteMovie()
     }
 
   return (
@@ -29,6 +40,8 @@ const MovieDetailsPage = ({backendURL, state}) => {
 
         <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
         {/* Can add to watchlist by doing a push using data.movie */}
+        <br/>
+        <button onClick={handleDeleteFromWatchlist}>Remove From Watchlist</button>
         <br/>
         <button>Add a Review</button>
         <br/>
