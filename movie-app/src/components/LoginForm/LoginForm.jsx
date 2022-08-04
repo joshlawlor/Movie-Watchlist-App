@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import './LoginForm.css'
 import tokenService from '../../utils/tokenService';
+import { useNavigate } from 'react-router-dom';
 
 
 const LoginForm = ({backendURL}) => {
     const [userCred, SetUserCred] = useState({email: "", password: ""});
     const [errorCode, setErrorCode] = useState(0); // 1 email not found, 2 is password incorrect
+    let navigate = useNavigate()
 
     function handleChange(event){
         SetUserCred({ ...userCred, [event.target.id]: event.target.value });
@@ -30,7 +32,10 @@ const LoginForm = ({backendURL}) => {
     function handleSubmit(e){
       e.preventDefault();
       testUserCred();
+      navigate("/movies", {replace: true})
+      
     }
+    
   
   return (
     <form class='form' onSubmit={handleSubmit}>
