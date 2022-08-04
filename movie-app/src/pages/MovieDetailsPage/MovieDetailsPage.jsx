@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import tokenService from '../../utils/tokenService';
+import {useNavigate} from 'react-router-dom'
+
 
 const MovieDetailsPage = ({backendURL, state}) => {
+    let navigate = useNavigate()
+
     const [movie, setMovie] = useState([]);
     const location = useLocation();
     const data = location.state
@@ -16,7 +20,9 @@ const MovieDetailsPage = ({backendURL, state}) => {
                 console.log(response)
             })
         }   
-        addMovie()     
+        addMovie()  
+        return navigate("/watchlist")
+           
     }
 
     function handleDeleteFromWatchlist(){
@@ -28,6 +34,7 @@ const MovieDetailsPage = ({backendURL, state}) => {
             })
         }
         deleteMovie()
+        return navigate("/watchlist")
     }
 
   return (

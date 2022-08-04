@@ -2,16 +2,14 @@ import React, { useEffect, useState} from 'react'
 import MovieThumbnail from '../../components/MovieThumbnail';
 import tokenService from '../../utils/tokenService';
 import MoviesPage from '../MoviesPage/MoviesPage';
-
-
-
+import { useNavigate } from 'react-router';
 
 const WatchListPage = ({backendURL}) => {
-
-
   const userToken = tokenService.getToken()
 
   const [watchList, setWatchList] = useState([]);
+
+  let navigate = useNavigate()
 
   // let watchList = []
   
@@ -27,7 +25,6 @@ const WatchListPage = ({backendURL}) => {
         }
       }).then(response=>{
         console.log(response);
-        // watchList.push([...response])
         setWatchList([...response]);
       })
       .catch(err =>{
@@ -35,6 +32,9 @@ const WatchListPage = ({backendURL}) => {
       })
     }
     watchListShowAll()
+    return navigate("/watchlist")
+
+
   },[]);
 
 
