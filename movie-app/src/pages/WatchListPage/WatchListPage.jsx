@@ -10,7 +10,7 @@ const WatchListPage = ({backendURL}) => {
   if(token !== undefined || token !== null){
     useEffect(()=>{
       async function getWatchlist(){
-        await fetch(backendURL + "/users/watchlist", {method: "GET", headers: new Headers({'authorization': token})})
+        await fetch(backendURL + "/users/watchlist", {method: "GET", headers: new Headers({'content-Type': 'application/x-www-form-urlencoded', 'authorization': token})})
         .then(response => {
           if(response.ok)
             return response.json();
@@ -27,7 +27,7 @@ const WatchListPage = ({backendURL}) => {
     <div>
         {(watchlist.length == 0)?<h1>add movies to watchlist</h1>:null}
         {watchlist.map((movie)=>{
-          return <MovieThumbnail movie={movie}/>
+          return <MovieThumbnail backendURL={backendURL} movie={movie}/>
         })}
     </div>
   )

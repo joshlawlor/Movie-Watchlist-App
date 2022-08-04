@@ -11,6 +11,7 @@ const backendURL = "http://127.0.0.1:9000";
 import Modal from 'react-modal';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import LoginForm from './components/LoginForm/LoginForm';
+import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
 
 
 function App(){
@@ -34,6 +35,7 @@ function App(){
 
       <Routes>
           <Route path='/movies' element={<MoviesPage backendURL={backendURL}/>}/>
+          <Route path='movies/:imdbId' element={<MovieDetailsPage backendURL={backendURL}/>}/>
           <Route path='/watchlist' element={<WatchListPage backendURL={backendURL}/>}/>
           <Route path='/friends' element={<FriendsPage backendURL={backendURL}/>}/>
           {/* Need to have :userid incorporated into Watchlist and Friends so it's specific to user */}
