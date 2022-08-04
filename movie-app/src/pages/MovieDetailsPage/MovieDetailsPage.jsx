@@ -6,33 +6,11 @@ const MovieDetailsPage = ({backendURL, state}) => {
     const [movie, setMovie] = useState([]);
     const location = useLocation();
     const data = location.state
-    // useEffect(()=>{
-    //   async function getMovieDetails() {
-    //     await fetch(`${backendURL}/movies/${data.movie.id}`,{method: "GET", headers: new Headers({'content-Type': 'application/json'})})
-    //     .then(res=>{
-    //       console.log(res);
-    //       if(!res.ok){
-    //         console.log(res.body);
-    //       }else{
-    //         return res.json();
-    //       }
-    //     }).then(response=>{
-    //       console.log(response);
-    //       setMovie([...response]);
-    //     })
-    //     .catch(err =>{
-    //       console.log(err);
-    //     })
-    //   }
-    // getMovieDetails();
-    // console.log(data.movie)
-    // },[]);
-
     const userToken = tokenService.getToken()
 
     function handleAddToWatchlist(e){
         async function addMovie() {
-            await fetch(`${backendURL}/users/watchlist/`, {method: "PATCH", body: JSON.stringify(data.movie) , headers: new Headers({'content-Type': 'application/x-www-form-urlencoded', 'authorization': `${userToken}`})})
+            await fetch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(data.movie) , headers: new Headers({'content-Type': 'application/x-www-form-urlencoded', 'authorization': `${userToken}`})})
 
             .then(response =>{
                 console.log(response)
