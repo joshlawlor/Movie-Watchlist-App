@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { Redirect } from 'react-router-dom';
-import {setToken} from '../../utils/tokenService';
+import tokenService from '../../utils/tokenService';
 import './SignUpForm.css'
 
 

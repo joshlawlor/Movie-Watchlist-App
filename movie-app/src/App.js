@@ -8,6 +8,7 @@ import MoviesPage from './pages/MoviesPage/MoviesPage'
 import WatchListPage from './pages/WatchListPage/WatchListPage'
 import FriendsPage from './pages/FriendsPage/FriendsPage'
 import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage'
+import { useState, useEffect } from 'react';
 // import tokenService from './utils/tokenService';
 // import UserService from './utils/UserService';
 const backendURL = "http://127.0.0.1:9000";
@@ -18,6 +19,10 @@ function App(){
   // const [user,setUser] = useState({});
   // if(token){
   //   setUser(UserService.getUser(token));
+
+
+ 
+
   // }
   return (
     <div className="App">
