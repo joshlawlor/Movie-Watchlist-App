@@ -37,7 +37,7 @@ const WatchListPage = ({backendURL}) => {
     watchListShowAll()
   },[]);
   console.log(watchList.map(movie => {
-    return movie
+    return console.log(movie)
   }))
 
   return (

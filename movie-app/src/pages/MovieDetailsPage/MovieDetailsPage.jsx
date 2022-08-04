@@ -10,7 +10,7 @@ const MovieDetailsPage = ({backendURL, state}) => {
 
     function handleAddToWatchlist(e){
         async function addMovie() {
-            await fetch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(data.movie) , headers: new Headers({'content-Type': 'application/x-www-form-urlencoded', 'authorization': `${userToken}`})})
+            await fetch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(data.movie) , headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
 
             .then(response =>{
                 console.log(response)
