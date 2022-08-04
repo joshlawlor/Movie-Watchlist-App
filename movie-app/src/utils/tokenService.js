@@ -4,7 +4,6 @@ function setToken(token) {
 function getToken() {
 let token = localStorage.getItem('token');
 
-// need to check if token = null if so renew
 return token;
 }
 function removeToken() {
