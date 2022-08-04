@@ -6,39 +6,28 @@ const MovieDetailsPage = ({backendURL, state}) => {
     const [movie, setMovie] = useState([]);
     const location = useLocation();
     const data = location.state
-    // useEffect(()=>{
-    //   async function getMovieDetails() {
-    //     await fetch(`${backendURL}/movies/${data.movie.id}`,{method: "GET", headers: new Headers({'content-Type': 'application/json'})})
-    //     .then(res=>{
-    //       console.log(res);
-    //       if(!res.ok){
-    //         console.log(res.body);
-    //       }else{
-    //         return res.json();
-    //       }
-    //     }).then(response=>{
-    //       console.log(response);
-    //       setMovie([...response]);
-    //     })
-    //     .catch(err =>{
-    //       console.log(err);
-    //     })
-    //   }
-    // getMovieDetails();
-    // console.log(data.movie)
-    // },[]);
-
     const userToken = tokenService.getToken()
-
+    console.log('MOVIE '+data.movie.id)
     function handleAddToWatchlist(e){
         async function addMovie() {
-            await fetch(`${backendURL}/users/watchlist/`, {method: "PATCH", body: JSON.stringify(data.movie) , headers: new Headers({'content-Type': 'application/x-www-form-urlencoded', 'authorization': `${userToken}`})})
+            await fetch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(data.movie) , headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
 
             .then(response =>{
                 console.log(response)
             })
         }   
         addMovie()     
+    }
+
+    function handleDeleteFromWatchlist(){
+        async function deleteMovie() {
+            await fetch(`${backendURL}/users/watchlist/delete/${data.movie.id}`, {method: "DELETE", headers: new Headers({'authorization': `${userToken}`}) })
+            .then(response =>{
+                console.log(response)
+                
+            })
+        }
+        deleteMovie()
     }
 
   return (
@@ -51,6 +40,8 @@ const MovieDetailsPage = ({backendURL, state}) => {
 
         <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
         {/* Can add to watchlist by doing a push using data.movie */}
+        <br/>
+        <button onClick={handleDeleteFromWatchlist}>Remove From Watchlist</button>
         <br/>
         <button>Add a Review</button>
         <br/>
