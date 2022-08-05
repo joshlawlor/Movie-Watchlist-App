@@ -3,9 +3,12 @@ import { useLocation, useParams } from 'react-router-dom';
 import tokenService from '../../utils/tokenService';
 import ReviewForm from '../../components/ReviewForm/ReviewForm';
 import Modal from 'react-modal';
+import { useNavigate } from 'react-router-dom';
 
 
 const MovieDetailsPage = ({backendURL}) => {
+    let navigate = useNavigate()
+  
   const {imdbId} = useParams();
   const [movie, setMovie] = useState(
 { crew: "",
@@ -46,7 +49,7 @@ const MovieDetailsPage = ({backendURL}) => {
 
   useEffect(()=>{
     async function checkMovie() {
-      await fetch(`${backendURL}/movies/${imdbId}`, {method: "GET", headers: new Headers({'content-Type': 'application/x-www-form-urlencoded', 'authorization': `${userToken}`})})
+      await fetch(`${backendURL}/movies/${imdbId}`, {method: "GET", headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
       .then(response =>{
           return response.json();
       })
@@ -62,7 +65,7 @@ const MovieDetailsPage = ({backendURL}) => {
 
   function handleAddToWatchlist(e){
       async function addMovie() {
-          await fetch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(movie) , headers: new Headers({'content-Type': 'application/x-www-form-urlencoded', 'authorization': `${userToken}`})})
+          await fetch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(movie) , headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
           .then(response =>{
               return response.json();
           }).then(()=>{
@@ -70,6 +73,7 @@ const MovieDetailsPage = ({backendURL}) => {
           })
       }   
       addMovie()
+      return navigate('/watchlist')
   }
 
 
@@ -82,6 +86,7 @@ const MovieDetailsPage = ({backendURL}) => {
             })
         }
         deleteMovie()
+        return navigate('/watchlist')
     }
 
   return (
