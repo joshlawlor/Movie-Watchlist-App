@@ -28,8 +28,10 @@ function App(){
         <li><Link to='/watchlist'>Watch List</Link></li>
         <li><Link to="/friends">Friends</Link></li>         
         {/* Need to have :userid incorporated into Watchlist and Friends so it's specific to user */}
-        <li><button onClick={()=>{setIsOpen(true);setModalContent(<LoginForm backendURL={backendURL}/>)}}>Login</button></li>
-        <li><button onClick={()=>{setIsOpen(true);setModalContent(<SignUpForm backendURL={backendURL}/>)}}>Signup</button></li>
+
+        <li><button onClick={()=>{setIsOpen(true);setModalContent(<LoginForm backendURL={backendURL} setIsOpen={setIsOpen}/>)}}>Login</button></li>
+        <li><button onClick={()=>{setIsOpen(true);setModalContent(<SignUpForm backendURL={backendURL} setIsOpen={setIsOpen}/>)}}>Signup</button></li>
+
         {/* Need a way to show certain links only when logged in */}
       </ul>
 
