@@ -5,7 +5,7 @@ const MovieThumbnail = ({movie}) => {
     <a href={`./movies/${movie.id}`}>
     <img src={movie.image} alt="">
     </img>
-    <h3>{movie.title}</h3>
+    {/* <h3>{movie.title}</h3> */}
     </a>
   )
 }
