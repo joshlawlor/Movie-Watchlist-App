@@ -9,9 +9,17 @@ return token;
 function removeToken() {
   localStorage.removeItem('token');
 }
-
+function checkLogIn() {
+  const token = localStorage.getItem('token');
+  if(token){
+      return true;
+  }else{
+      return false;
+  }
+}
 export default {
   setToken,
   getToken,
+  checkLogIn,
   removeToken
 };

@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import tokenService from '../../utils/tokenService';
 import { useNavigate } from 'react-router-dom';
 
-const SignUpForm = ({backendURL, setIsOpen}) => {
+const SignUpForm = ({backendURL, setIsOpen, setLoggedIn}) => {
     const [userCred, SetUserCred] = useState({email: "", password: "", confirmPassword: ""})
     const [errorCode, setErrorCode] = useState(0); // 1 is passoword don't match, 2 is email already taken
     let navigate = useNavigate()
@@ -25,6 +25,7 @@ const SignUpForm = ({backendURL, setIsOpen}) => {
       }).then(({token}) => {
         tokenService.setToken(token);
         setIsOpen(false);
+        setLoggedIn(true);
       }).catch(err =>{
         console.log(err)
       })
