@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import tokenService from '../../utils/tokenService';
 import { useNavigate } from 'react-router-dom';
 
-const SignUpForm = ({backendURL}) => {
+const SignUpForm = ({backendURL, setIsOpen, setLoggedIn}) => {
     const [userCred, SetUserCred] = useState({email: "", password: "", confirmPassword: ""})
     const [errorCode, setErrorCode] = useState(0); // 1 is passoword don't match, 2 is email already taken
     let navigate = useNavigate()
@@ -12,8 +12,8 @@ const SignUpForm = ({backendURL}) => {
         SetUserCred({ ...userCred, [event.target.id]: event.target.value });
     };
     async function testUserCred(){
-      console.log(userCred)
-      await fetch(`${backendURL}/users/signup`,{method: "POST", body: JSON.stringify(userCred), headers: new Headers({'content-Type': 'application/json'})})
+      console.log(backendURL);
+      await fetch(backendURL + "/users/signup",{method: "POST", body: JSON.stringify(userCred), headers: new Headers({'content-Type': 'application/json'})})
       .then((response) =>{
         if(!response.ok){
           console.log(response.body);
@@ -23,8 +23,9 @@ const SignUpForm = ({backendURL}) => {
             return response.json();
         }
       }).then(({token}) => {
-        console.log(token)
-        tokenService.setToken(token)
+        tokenService.setToken(token);
+        setIsOpen(false);
+        setLoggedIn(true);
       }).catch(err =>{
         console.log(err)
       })
