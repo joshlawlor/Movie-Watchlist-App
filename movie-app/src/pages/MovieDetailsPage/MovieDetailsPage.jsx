@@ -4,10 +4,13 @@ import tokenService from '../../utils/tokenService';
 import ReviewForm from '../../components/ReviewForm/ReviewForm';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
+import ReviewEdit from '../../components/ReviewEdit/ReviewEdit';
 
-
-const MovieDetailsPage = ({backendURL}) => {
+const MovieDetailsPage = ({backendURL},{setReviews}) => {
+  
     let navigate = useNavigate()
+  
+
   
   const {imdbId} = useParams();
   const [movie, setMovie] = useState(
@@ -26,7 +29,7 @@ const MovieDetailsPage = ({backendURL}) => {
 });
   const [isOnWatchlist, setIsOnWatchlist] = useState(false);
   const userToken = tokenService.getToken();
-  const [reviews, setReviewItems] = useState([])
+  // const [reviews, setReviewItems] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:9000/movies/`)
@@ -89,6 +92,11 @@ const MovieDetailsPage = ({backendURL}) => {
         return navigate('/watchlist')
     }
 
+    const updateReviewState = (id) => {
+      console.log(id)
+      setReviews(movie.reviews.filter(review => review._id !== id))
+    }
+
   return (
     <div>
         <h1>{movie.title}</h1>
@@ -107,9 +115,9 @@ const MovieDetailsPage = ({backendURL}) => {
         </Modal>
 
 {movie.reviews.map((review) => {return <div><p>Rating:{review.rating} Comments: 
-{review.content}</p></div>})}        
+{review.content}</p><ReviewEdit setReviews={updateReviewState} movie={movie}/></div>})}        
 
-
+{/* <button onClick={()=>{setIsOpen(true);setModalContent(<ReviewEdit movie={movie} setReviews={setReviews}/>)}}>Edit Review</button>  */}
 
     </div>
   )
