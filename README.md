@@ -4,7 +4,9 @@
 
 This is the movie app!
 
-This is the app is Deployed FrontEnd [here](Link)!  This app is designed to help people find movies!
+Deployed FrontEnd [here](https://runtimeterror1.herokuapp.com/)! 
+
+This app is designed to help people find movies!
 
 This repository contains:
 
@@ -43,36 +45,52 @@ The goals for this repository are:
 
 ## Description
 
-An app that helps you find movies to watch!
+An app that helps you find movies to watch! Create an account, browse movies and add favorites to a watchlist. 
 
 ## Brief Example
 
-(screenshots of the app)
-IT NEEDS TO BE ADDED AFTER THE PROJECT IS FINISHED
-
+![Main page](https://user-images.githubusercontent.com/90112549/183229770-a2a9c8d9-2f46-4c5c-8a72-5532975eda8e.PNG)
+![main movie page](https://user-images.githubusercontent.com/90112549/183229803-b54778f7-645b-4b42-a5ba-b7fc887b82f4.PNG)
+![movie detail page](https://user-images.githubusercontent.com/90112549/183229816-0178d400-01f9-47cc-9fb6-d975c2c4da8d.PNG)
 ## User Stories
 
-PUT THE USER STORIES HERE!!!
+- As a user, I want to be able to login to access my watchList 
+- As a User, I want to see a large list of movies that I can pick from
+- As a User, I want to be able to rate and review Movies
+- As a User I want to update my list of movies to watch
+- As a user I want to see the movies I have favorited to watch
+- As a Developer, I want to easily access the Models and Data
 
 ## Getting Started
 
-(describe how to use the app)
-IT NEEDS TO BE ADDED AFTER THE PROJECT IS FINISHED
+-As a user you can sign up
+-As a user you can view all the movies in our database
+-As a user you can click on a movie to see the details
+-As a user you can add this movie to your watchlist to view later
+-As as user you can update your watchlist by adding more movies or removing them
 
-## technologies used
+## Technologies used
 
-This project uses node.js React.js, javascript, CSS, HTML, mongoose, express.js, and MongoDB.
+This project uses: 
+- node.js, 
+- React.js,
+- javascript,
+- CSS, 
+- HTML, 
+- Mongoose,
+- express.js,
+- MongoDB.
 
-## dependencies
-
-(look in the pakcage.json and the imports)
-IT NEEDS TO BE ADDED AFTER THE PROJECT IS FINISHED
+## Dependencies
+Npm i to get started. 
+- Backend: Bcrypt, cors, dotenv, express, jsonwebtoken, mongoose, normalize-port 
+- Frontend: Axios, Bootstrap, React 
 
 ## Deployment
 
-This project FrontEnd is deployed [here](link)!
+This project FrontEnd is deployed [here](https://runtimeterror1.herokuapp.com/)!
 
-This project BackEnd is deployed [here](link)!
+This project BackEnd is deployed [here](https://runtimeterror2022.herokuapp.com/)!
 
 ## Maintainers
 
