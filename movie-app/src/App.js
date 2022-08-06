@@ -31,7 +31,7 @@ function App(){
         {/* Need to have :userid incorporated into Watchlist and Friends so it's specific to user */}
 
         {loggedIn?null:<li><button onClick={()=>{setIsOpen(true);setModalContent(<LoginForm backendURL={backendURL} setIsOpen={setIsOpen} setLoggedIn={setLoggedIn}/>)}}>Login</button></li>}
-        {loggedIn?<button onClick={()=>{UserService.logout;setLoggedIn(false)}}>Log Out</button>:<li><button onClick={()=>{setIsOpen(true);setModalContent(<SignUpForm backendURL={backendURL} setIsOpen={setIsOpen} setLoggedIn={setLoggedIn}/>)}}>Signup</button></li>}
+        {loggedIn?<button onClick={()=>{UserService.logout;setLoggedIn(false);tokenService.removeToken}}>Log Out</button>:<li><button onClick={()=>{setIsOpen(true);setModalContent(<SignUpForm backendURL={backendURL} setIsOpen={setIsOpen} setLoggedIn={setLoggedIn}/>)}}>Signup</button></li>}
 
         {/* Need a way to show certain links only when logged in */}
       </ul>
