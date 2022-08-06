@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Link , Route , Routes} from 'react-router-dom'
 import './App.css';
 import LandingPage from './pages/LandingPage/LandingPage';
@@ -18,6 +18,25 @@ function App(){
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalContent, setModalContent] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(tokenService.checkLogIn());
+
+  const [reviews, setReviews] = useState([])
+
+
+  useEffect(() => {
+    fetch(`http://localhost:9000/movies/`)
+    .then(res => res.json())
+    .then(items => setReviews(items))
+  }, [])
+   
+
+    // const addToReviews = (review) => {
+    //   setReviews(...reviews, review)
+    // }
+
+
+
+
 
   return (
     <div className="App">
@@ -28,8 +47,10 @@ function App(){
         <li><Link to='/watchlist'>Watch List</Link></li>
         <li><Link to="/friends">Friends</Link></li>         
         {/* Need to have :userid incorporated into Watchlist and Friends so it's specific to user */}
-        <li><button onClick={()=>{setIsOpen(true);setModalContent(<LoginForm backendURL={backendURL}/>)}}>Login</button></li>
-        <li><button onClick={()=>{setIsOpen(true);setModalContent(<SignUpForm backendURL={backendURL}/>)}}>Signup</button></li>
+
+        {loggedIn?null:<li><button onClick={()=>{setIsOpen(true);setModalContent(<LoginForm backendURL={backendURL} setIsOpen={setIsOpen} setLoggedIn={setLoggedIn}/>)}}>Login</button></li>}
+        {loggedIn?<button onClick={()=>{UserService.logout;setLoggedIn(false);tokenService.removeToken}}>Log Out</button>:<li><button onClick={()=>{setIsOpen(true);setModalContent(<SignUpForm backendURL={backendURL} setIsOpen={setIsOpen} setLoggedIn={setLoggedIn}/>)}}>Signup</button></li>}
+
         {/* Need a way to show certain links only when logged in */}
       </ul>
 
