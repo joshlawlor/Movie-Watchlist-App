@@ -29,7 +29,7 @@ This repository contains:
 - [Contributing](#contributing)
 - [License](#license)
 
-## Backgound
+## Background
 
 This is the original repostitory by [@joshlawlor](https://github.com/joshlawlor).  This project was planned, created and maintained by [@joshlawlor](https://github.com/joshlawlor), [@testler](https://github.com/testler), [@benb](https://github.com/benb), and [@ss18026](https://github.com/ss18026).
 
