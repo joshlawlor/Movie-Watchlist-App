@@ -50,30 +50,30 @@ const MovieDetailsPage = ({backendURL}) => {
 
   useEffect(()=>{
     async function checkMovie() {
-      let res = await axios.get(`${backendURL}/movies/${imdbId}`, {method: "GET", headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
+      let res = await axios.get(`${backendURL}/movies/${imdbId}`, {method: "GET", headers: new Headers({'Content-Type': 'application/json', 'Authorization': `${userToken}`})})
         let data = res.data
-        console.log(data)
           setMovie(data[0])
     }   
     async function checkWatchlist(){
-      let res = await axios.get(`${backendURL}/movies/${imdbId}/watchlist`, {method: "GET", headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
+      let res = await fetch(`${backendURL}/movies/${imdbId}/watchlist`, {method: "GET", headers: new Headers({'Content-Type': 'application/json', 'Authorization': `${userToken}`})})
       // console.log(await res.json())
-      let data =  res.data
+      console.log('LINE 62',res)
+      let data =  await res.json()
       console.log('MY DATA',data)
       if(data[0].isOnWatchList) setIsOnWatchlist(true)
+      return
     }
     checkMovie();
     checkWatchlist();
   }, [])
 
 
-  function handleAddToWatchlist(e){
+   function handleAddToWatchlist(e){
       async function addMovie() {
-          await fetch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(movie) , headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
+          await fetch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(movie) , headers: new Headers({'Content-Type': 'application/json', 'Authorization': `${userToken}`})})
           .then(response =>{
+            // console.log(response)
               return response.json();
-          }).then(()=>{
-
           })
       }   
       addMovie()
