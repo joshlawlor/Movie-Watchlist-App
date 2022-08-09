@@ -28,11 +28,11 @@ const MovieDetailsPage = ({backendURL}) => {
   const userToken = tokenService.getToken();
   const [reviews, setReviewItems] = useState([])
 
-  useEffect(() => {
-    fetch(`http://localhost:9000/movies/`)
-    .then(res => res.json())
-    // .then(items => setReviewItems(items))
-  }, [])
+  // useEffect(() => {
+  //   fetch(`http://localhost:9000/movies/`)
+  //   .then(res => res.json())
+  //   // .then(items => setReviewItems(items))
+  // }, [])
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalContent, setModalContent] = useState(true);
@@ -49,17 +49,20 @@ const MovieDetailsPage = ({backendURL}) => {
 
   useEffect(()=>{
     async function checkMovie() {
-      await fetch(`${backendURL}/movies/${imdbId}`, {method: "GET", headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
-      .then(response =>{
-          return response.json();
-      })
-      .then((res)=>{
-        console.log(res);
-        setMovie(res[0]);
-        setIsOnWatchlist(res[1]);
-      })
+      let res = await fetch(`${backendURL}/movies/${imdbId}`, {method: "GET", headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
+        let data = await res.json()
+        console.log(data)
+          setMovie(data[0])
     }   
+    async function checkWatchlist(){
+      let res = await fetch(`${backendURL}/movies/${imdbId}/watchlist`, {method: "GET", headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
+      // console.log(await res.json())
+      let data = await res.json()
+      console.log('MY DATA',data)
+      if(data[0].isOnWatchList) setIsOnWatchlist(true)
+    }
     checkMovie();
+    checkWatchlist();
   }, [])
 
 
@@ -88,6 +91,9 @@ const MovieDetailsPage = ({backendURL}) => {
         deleteMovie()
         return navigate('/watchlist')
     }
+
+    console.log(isOnWatchlist)
+
 
   return (
     <div>

@@ -1,29 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import MovieThumbnail from '../../components/MovieThumbnail';
-
-
+import axios from 'axios';
+const options = {method: 'GET', headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},  credentials: 'include', 'Access-Control-Allow-Origin': '*'}
 const MoviesPage = ({backendURL}) => {
   const [movies, setMovies] = useState([]);
   useEffect(()=>{
     async function getAllMovies() {
-      await fetch(`${backendURL}/movies/`,{method: "GET", headers: new Headers({'content-Type': 'application/json'})})
-      .then(res=>{
-        console.log(res);
-        if(!res.ok){
-          console.log(res.body);
-        }else{
-          return res.json();
-        }
-      }).then(response=>{
-        console.log(response);
-        setMovies([...response]);
-      })
-      .catch(err =>{
-        console.log(err);
-      })
+    let res = await axios.get(`${backendURL}/movies/`, options)
+    // console.log('Line 10',res)
+    let data = res.data
+    console.log(data)
+    setMovies([...data])
     }
-  getAllMovies();
-  },[]);
+    getAllMovies();}, [])
 
 
 

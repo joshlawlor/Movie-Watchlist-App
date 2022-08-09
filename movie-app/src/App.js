@@ -7,7 +7,7 @@ import WatchListPage from './pages/WatchListPage/WatchListPage'
 import FriendsPage from './pages/FriendsPage/FriendsPage'
 import tokenService from './utils/tokenService';
 import UserService from './utils/UserService';
-const backendURL = "http://127.0.0.1:9000";
+const backendURL = "https://runtimeterror2022.herokuapp.com";
 import Modal from 'react-modal';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import LoginForm from './components/LoginForm/LoginForm';
