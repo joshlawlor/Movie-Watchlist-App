@@ -4,6 +4,7 @@ import tokenService from '../../utils/tokenService';
 import ReviewForm from '../../components/ReviewForm/ReviewForm';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const MovieDetailsPage = ({backendURL}) => {
@@ -49,15 +50,15 @@ const MovieDetailsPage = ({backendURL}) => {
 
   useEffect(()=>{
     async function checkMovie() {
-      let res = await fetch(`${backendURL}/movies/${imdbId}`, {method: "GET", headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
-        let data = await res.json()
+      let res = await axios.get(`${backendURL}/movies/${imdbId}`, {method: "GET", headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
+        let data = res.data
         console.log(data)
           setMovie(data[0])
     }   
     async function checkWatchlist(){
-      let res = await fetch(`${backendURL}/movies/${imdbId}/watchlist`, {method: "GET", headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
+      let res = await axios.get(`${backendURL}/movies/${imdbId}/watchlist`, {method: "GET", headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
       // console.log(await res.json())
-      let data = await res.json()
+      let data =  res.data
       console.log('MY DATA',data)
       if(data[0].isOnWatchList) setIsOnWatchlist(true)
     }
@@ -68,7 +69,7 @@ const MovieDetailsPage = ({backendURL}) => {
 
   function handleAddToWatchlist(e){
       async function addMovie() {
-          await fetch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(movie) , headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
+          await axios.patch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(movie) , headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
           .then(response =>{
               return response.json();
           }).then(()=>{
@@ -82,7 +83,7 @@ const MovieDetailsPage = ({backendURL}) => {
 
     function handleDeleteFromWatchlist(){
         async function deleteMovie() {
-            await fetch(`${backendURL}/users/watchlist/delete/${movie.id}`, {method: "DELETE", headers: new Headers({'authorization': `${userToken}`}) })
+            await axios.get(`${backendURL}/users/watchlist/delete/${movie.id}`, {method: "DELETE", headers: new Headers({'authorization': `${userToken}`}) })
             .then(response =>{
                 console.log(response)
                 
