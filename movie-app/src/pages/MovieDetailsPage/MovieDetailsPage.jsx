@@ -69,7 +69,7 @@ const MovieDetailsPage = ({backendURL}) => {
 
   function handleAddToWatchlist(e){
       async function addMovie() {
-          await axios.patch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(movie) , headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
+          await fetch(`${backendURL}/users/watchlist/add`, {method: "PATCH", body: JSON.stringify(movie) , headers: new Headers({'content-Type': 'application/json', 'authorization': `${userToken}`})})
           .then(response =>{
               return response.json();
           }).then(()=>{
@@ -83,7 +83,7 @@ const MovieDetailsPage = ({backendURL}) => {
 
     function handleDeleteFromWatchlist(){
         async function deleteMovie() {
-            await axios.get(`${backendURL}/users/watchlist/delete/${movie.id}`, {method: "DELETE", headers: new Headers({'authorization': `${userToken}`}) })
+            await fetch(`${backendURL}/users/watchlist/delete/${movie.id}`, {method: "DELETE", headers: new Headers({'authorization': `${userToken}`}) })
             .then(response =>{
                 console.log(response)
                 
